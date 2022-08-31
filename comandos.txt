@@ -26,3 +26,6 @@ yarn add eslint@^7.21.0 -D
 
 initialize EsLin in the project
 yarn eslint --init
+
+install to help in the compilation js
+yarn add ts-node-dev -D 
