@@ -1,0 +1,28 @@
+Creating project node
+yarn init -y
+
+Include the express  lib and types
+yarn add express
+
+yarn add @types/express -D
+
+Create folder src and file service.ts
+
+install dependency typescript
+
+yarn add typescript -D
+
+Initialize typescript
+
+yarn tsc --init
+
+change tsconfig.js file
+descomment outDir
+
+execute yarn tsc
+
+install EsLint
+yarn add eslint@^7.21.0 -D
+
+initialize EsLin in the project
+yarn eslint --init
