@@ -1,12 +1,12 @@
 
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import { CategoriesRepository } from '../../repositories/CategoriesRepository';
 
 interface IRequest{
    name:string;
    description:string; 
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
 
     constructor(private categoriesRepository: CategoriesRepository){
 
@@ -24,4 +24,4 @@ class CreateCategoryService {
     }
 }
 
-export { CreateCategoryService }
+export { CreateCategoryUseCase }
