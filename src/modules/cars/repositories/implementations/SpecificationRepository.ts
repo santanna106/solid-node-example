@@ -1,12 +1,21 @@
-import { Spacification } from '../model/Spacification';
-import { ISpecificationRepository, ISpecificationDTO } from './ISpecificationRepository';
+import { Spacification } from '../../model/Spacification';
+import { ISpecificationRepository, ISpecificationDTO } from '../ISpecificationRepository';
 
 
 class SpecificationRepository implements ISpecificationRepository {
     private specifications: Spacification[];
+    private static INSTANCE: SpecificationRepository;
 
-    constructor(){
+    private constructor(){
         this.specifications = [];
+    }
+
+    public static getInstance() : SpecificationRepository{
+        if(!SpecificationRepository.INSTANCE){
+            SpecificationRepository.INSTANCE = new SpecificationRepository();
+        } 
+
+        return SpecificationRepository.INSTANCE;
     }
 
     create({ name,description }: ISpecificationDTO): void {
@@ -19,8 +28,6 @@ class SpecificationRepository implements ISpecificationRepository {
             })
             this.specifications.push(specification);
       
-    
-        
     }
 
     list() : Spacification[]{

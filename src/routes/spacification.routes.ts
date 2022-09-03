@@ -1,26 +1,17 @@
 import { Router } from 'express';
 
-import { CreateSpacificationService } from '../modules/cars/services/CreateSpacificationService';
-import { SpecificationRepository } from '../modules/cars/repositories/SpecificationRepository';
+import { SpecificationRepository } from '../modules/cars/repositories/implementations/SpecificationRepository';
+import { createSpecificationController } from '../modules/cars/useCases/createSpecification';
+import { listCategoryController } from '../modules/cars/useCases/listCategories';
 
 const specificationRoutes = Router();
-const spacrificationRepository = new SpecificationRepository();
 
 specificationRoutes.post("/", (request,response) => {
-    const { name,description } = request.body;
-
-    const createCategoryService = new CreateSpacificationService(spacrificationRepository);
-
-    createCategoryService.execute({name,description});
-   
-
-    return response.status(201).send();
-})
-
+    return createSpecificationController.handle(request,response);
+});
 
 specificationRoutes.get("/", (request,response) => {
-    const all = spacrificationRepository.list();
-    return response.json(all);
-})
+    return listCategoryController.handle(request,response);
+});
 
 export { specificationRoutes }
