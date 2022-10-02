@@ -1,17 +1,20 @@
+version: '3.8'
+
 services:
-  database_ignite:
-    image: postgres
+  db:
+    image: postgres:14.1-alpine
     container_name: database_ignite
     restart: always
-    port:
-      - 5432:5432
-    enviroment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=database_ignite
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=rentx
-    volumes:
+    volumes: 
       - pgdata:/data/postgres
-    network_mod: host
+    networks:
+      - host
   app:
     build: .
     container_name: rentx
@@ -19,8 +22,13 @@ services:
       - 3333:3333
     volumes:
       - .:/usr/app
-    network_mod: host
+    networks:
+      - host
 
 volumes:
-  pgdata: 
+  pgdata:
     driver: local
+
+networks:
+  host:
+    driver: bridge

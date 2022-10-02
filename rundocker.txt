@@ -8,3 +8,6 @@
  #Executando o docker-compose
 
  docker-compose up
+
+ #recriando docker
+ docker-compose up --force-recreate
