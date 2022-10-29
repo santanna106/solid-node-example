@@ -16,7 +16,10 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "migration:generate":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:generate ./src/database/migrations",
+    "migration:run":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run "
+    
   },
   "devDependencies": {
     "@types/csv-parse": "^1.2.2",
