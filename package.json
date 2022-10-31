@@ -18,7 +18,10 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "migration:generate":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:generate ./src/database/migrations",
-    "migration:run":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run "
+    "migration:run":"typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run ",
+    "migration:create":"./src/database/migrations/$npm_config_name",
+    "typeorm":"ts-node-dev ./node_modules/typeorm/cli",
+    "typeorm:create":"typeorm migration:create -n UrlMigration -d src/database/migrations"
     
   },
   "devDependencies": {

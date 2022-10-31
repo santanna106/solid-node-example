@@ -6,10 +6,11 @@ export const AppDataSource = new DataSource({
     port: 5432,
     username: "postgres",
     password: "postgres",
-    database: "postgres",
+    database: "rentx",
     synchronize: true,
     logging: true,
     entities: [`${__dirname}/**/model/*.{ts,js}`],
     subscribers: [],
-    migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
+    migrations: [`src/database/migrations/*.{ts,js}`],
+    
 })
