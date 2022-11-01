@@ -1,13 +1,9 @@
-import { DataSource } from "typeorm";
+import { AppDataSource } from './data-source';
 
-export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "rentx",
-    migrations: [
-        "migration/*.ts"
-    ],
-});
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err)
+    })

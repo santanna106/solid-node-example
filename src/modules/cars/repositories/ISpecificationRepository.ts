@@ -1,4 +1,4 @@
-import { Spacification } from "../model/Spacification";
+import { Spacification } from "../entities/Spacification";
 
 
 interface ISpecificationDTO{

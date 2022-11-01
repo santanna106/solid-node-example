@@ -1,4 +1,4 @@
-import { Spacification } from '../../model/Spacification';
+import { Spacification } from '../../entities/Spacification';
 import { ISpecificationRepository, ISpecificationDTO } from '../ISpecificationRepository';
 
 

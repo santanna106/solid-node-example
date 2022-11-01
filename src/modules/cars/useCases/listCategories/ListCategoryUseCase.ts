@@ -1,6 +1,6 @@
 
 import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepository';
-import { Category } from '../../model/Category';
+import { Category } from '../../entities/Category';
 
 class ListCategoryUseCase {
 

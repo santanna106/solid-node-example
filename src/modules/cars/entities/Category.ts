@@ -1,13 +1,15 @@
 import { v4 as uuidV4 } from 'uuid';
-import { Entity,Column,PrimaryColumn } from 'typeorm';
+import { Entity,Column,PrimaryColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('categories')
 class Category{
     @PrimaryColumn('id')
     id?:string;
-    @Column({type:'text'})
+    @Column()
     name:string;
+    @Column()
     description:string;
+    @CreateDateColumn()
     created_at:Date;
 
     constructor(){
