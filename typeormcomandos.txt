@@ -1,0 +1,5 @@
+
+
+
+/*Executar na raiz do projeto*/
+yarn typeorm migration:run -d .\src\database\data-source.ts
