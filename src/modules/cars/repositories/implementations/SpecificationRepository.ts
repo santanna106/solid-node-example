@@ -1,41 +1,46 @@
+import { Repository,FindOneOptions } from "typeorm";
+import { AppDataSource } from '../../../../database/data-source';
 import { Spacification } from '../../entities/Spacification';
 import { ISpecificationRepository, ISpecificationDTO } from '../ISpecificationRepository';
 
 
 class SpecificationRepository implements ISpecificationRepository {
-    private specifications: Spacification[];
-    private static INSTANCE: SpecificationRepository;
+   
 
-    private constructor(){
-        this.specifications = [];
+
+    private repository: Repository<Spacification>;
+    
+    constructor(){
+        this.repository = AppDataSource.getRepository(Spacification);
     }
 
-    public static getInstance() : SpecificationRepository{
-        if(!SpecificationRepository.INSTANCE){
-            SpecificationRepository.INSTANCE = new SpecificationRepository();
+    /*
+    public static getInstance() : CategoriesRepository{
+        if(!CategoriesRepository.INSTANCE){
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
         } 
 
-        return SpecificationRepository.INSTANCE;
+        return CategoriesRepository.INSTANCE;
+    }*/
+
+    async create({ name,description }: ISpecificationDTO): Promise<void> {
+        const specification = this.repository.create({
+            description,
+            name
+        });
+        await this.repository.save(specification);
     }
 
-    create({ name,description }: ISpecificationDTO): void {
-        const specification = new Spacification();
-        
-        Object.assign(specification, {
-                name,
-                description,
-                created_at: new Date()
-            })
-            this.specifications.push(specification);
-      
+    async list() : Promise<Spacification[]>{
+        const specifications = await this.repository.find();
+        return specifications;
     }
 
-    list() : Spacification[]{
-        return this.specifications;
-    }
-
-    findByName(name:string) : Spacification{
-        const specification = this.specifications.find(specification => specification.name === name);
+    async findByName(name:string) : Promise<Spacification>{
+        console.log("Name Repository: ",name );
+        const specification = await this.repository.findOneBy({     
+                name: name,
+        });
         return specification;
     }
 
