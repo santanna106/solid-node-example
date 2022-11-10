@@ -37,12 +37,10 @@ class CategoriesRepository implements ICategoriesRepository {
     }
 
     async findByName(name:string) : Promise<Category>{
-        const category = await this.repository.findOne({ 
-            Where: {
+        console.log("Name Repository: ",name );
+        const category = await this.repository.findOneBy({     
                 name: name,
-            },
-            lock: { mode: "optimistic", version: 1 },
-         } as FindOneOptions<Category>);
+        });
         return category;
     }
 
