@@ -1,5 +1,6 @@
 
-
+/*Criar migration*/
+ yarn typeorm migration:create  .\src\database\migrations\CreateSpacification
 
 /*Executar na raiz do projeto*/
 yarn typeorm migration:run -d .\src\database\data-source.ts
