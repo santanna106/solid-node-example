@@ -1,4 +1,4 @@
-
+import { inject,injectable } from 'tsyringe';
 import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepository';
 
 interface IRequest{
@@ -6,9 +6,12 @@ interface IRequest{
    description:string; 
 }
 
+@injectable()
 class CreateCategoryUseCase {
 
-    constructor(private categoriesRepository: CategoriesRepository){
+    constructor(
+        @inject("CategoriesRepository")
+        private categoriesRepository: CategoriesRepository){
 
     }
 
