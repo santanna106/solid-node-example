@@ -15,8 +15,10 @@ AppDataSource.initialize().then(() => {
 
     app.use(router);
 
+    console.log("Iniciou")
+
     app.listen(3333);
 
-});
+}).catch((error) => { console.log('Erro: ',error)});
 
 
