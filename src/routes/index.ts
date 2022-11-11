@@ -6,6 +6,6 @@ const router = Router();
 
 router.use("/categories",categoriesRoutes);
 
-router.use("/spcifications",specificationRoutes);
+router.use("/specifications",specificationRoutes);
 
 export { router };

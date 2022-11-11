@@ -1,14 +1,29 @@
 import { v4 as uuidV4 } from "uuid";
 import { Entity,Column,PrimaryColumn, CreateDateColumn } from 'typeorm';
 
-@Entity('specifications')
-class Spacification{
+@Entity('users')
+class User{
     @PrimaryColumn()
     id?:string;
+    
     @Column()
     name:string;
+
     @Column()
-    description:string;
+    username:string;
+
+    @Column()
+    email:string;
+
+    @Column()
+    password:string;
+
+    @Column()
+    driver_license:string;
+
+    @Column()
+    isAdmin:boolean;
+
     @CreateDateColumn()
     created_at:Date;
 
@@ -17,6 +32,7 @@ class Spacification{
             this.id = uuidV4();
         }
     }
+
 }
 
-export { Spacification }
+export { User }

@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner,Table } from "typeorm";
 
-export class CreateSpacification1668110973640 implements MigrationInterface {
+export class CreateUser1668150633999 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table(
                 {
-                    name:"specifications",
+                    name:"users",
                     columns:[
                         {
                             name:"id",
@@ -18,8 +18,26 @@ export class CreateSpacification1668110973640 implements MigrationInterface {
                             type:"varchar",
                         },
                         {
-                            name:"description",
+                            name:"username",
+                            type:"varchar",
+                            isUnique:true
+                        },
+                        {
+                            name:"password",
                             type:"varchar"
+                        },
+                        {
+                            name:"email",
+                            type:"varchar"
+                        },
+                        {
+                            name:"driver_license",
+                            type:"varchar"
+                        },
+                        {
+                            name:"isAdmin",
+                            type:"boolean",
+                            default:false
                         },
                         {
                             name:"created_at",
@@ -33,7 +51,7 @@ export class CreateSpacification1668110973640 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("specifications");
+        await queryRunner.dropTable("users");
     }
 
 }
