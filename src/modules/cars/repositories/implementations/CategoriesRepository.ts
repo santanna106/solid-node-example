@@ -3,7 +3,7 @@ import { AppDataSource } from '../../../../database/data-source';
 import { Category } from '../../entities/Category';
 import { ICategoriesRepository, ICreateCategoryDTO } from '../ICategoriesRepository';
 
-import { Repository,FindOneOptions } from "typeorm";
+import { Repository } from "typeorm";
 
 
 

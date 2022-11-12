@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     database: "rentx",
     synchronize: true,
     logging: true,
-    entities: [`./src/modules/cars/entities/*.{ts,js}`],
+    entities: [`./src/modules/cars/entities/*.{ts,js}`,`./src/modules/accounts/entities/*.{ts,js}`],
     subscribers: [],
     migrations: [`./src/database/migrations/*.{ts,js}`],
     

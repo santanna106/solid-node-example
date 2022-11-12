@@ -1,6 +1,6 @@
 import { AppDataSource } from '../../../../database/data-source';
 
-import { Repository,FindOneOptions } from "typeorm";
+import { Repository } from "typeorm";
 import { IUserRepository } from '../IUserRepository';
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { User } from '../../entities/User';
@@ -14,14 +14,6 @@ class UserRepository implements IUserRepository {
         this.repository = AppDataSource.getRepository(User);
     }
 
-    /*
-    public static getInstance() : CategoriesRepository{
-        if(!CategoriesRepository.INSTANCE){
-            CategoriesRepository.INSTANCE = new CategoriesRepository();
-        } 
-
-        return CategoriesRepository.INSTANCE;
-    }*/
 
     async create({name,username,email,driver_license,password}: ICreateUserDTO): Promise<void> {
         const user = this.repository.create({
@@ -29,7 +21,8 @@ class UserRepository implements IUserRepository {
             username,
             email,
             driver_license,
-            password
+            password,
+            isAdmin:false
         });
         await this.repository.save(user);
     }
