@@ -1,6 +1,7 @@
 import { inject,injectable } from 'tsyringe';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import { AppError } from '../../../../errors/AppError';
 
 import { IUserRepository } from '../../repositories/IUserRepository';
 
@@ -31,13 +32,13 @@ class AuthenticateUserUseCase {
        
         if(!useralreadyExistis)
         {
-            throw new Error("User name or password incorrect!");
+            throw new AppError("User name or password incorrect!");
             
         } else {
 
             const passworMatch = await compare(password,useralreadyExistis.password);
             if(!passworMatch){
-                throw new Error("User name or password incorrect!");
+                throw new AppError("User name or password incorrect!");
             }
 
             const token = sign({},"3e990f53bc110e3eef77d2a0a377d7c6",{
