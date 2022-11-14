@@ -1,5 +1,7 @@
 import { inject,injectable } from 'tsyringe';
-import { ICreateUserDTO, IUserRepository } from '../repositories/IUserRepository';
+import { hash } from 'bcryptjs';
+
+import { ICreateUserDTO, IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
 class CreateUserUseCase {
@@ -17,7 +19,10 @@ class CreateUserUseCase {
             //throw new Error("Category already exists!");
             console.log("User already exists!");
         } else {
-           await this.userRepository.create({name,username,driver_license,email,password});
+
+            const passwordHash = await hash(password,8);
+
+           await this.userRepository.create({name,username,driver_license,email,password:passwordHash});
         }
     
         
